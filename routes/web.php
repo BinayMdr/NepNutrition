@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CertificationController;
 use App\Http\Controllers\CustomerReviewController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
@@ -36,6 +37,7 @@ Route::group(['middleware'=>'auth','prefix' =>'admin'],function(){
 
     Route::get('/setting',[SettingController::class,'index'])->name('setting');
     Route::get('/certification',[CertificationController::class,'index'])->name('certification');
+    Route::get('/gallery',[GalleryController::class,'index'])->name('gallery');
 
     Route::get('/user',[UserController::class,'index'])->name('user');
     Route::get('/user/create',[UserController::class,'create'])->name('create.user');
