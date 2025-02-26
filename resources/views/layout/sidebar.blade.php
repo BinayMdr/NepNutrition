@@ -105,7 +105,7 @@
       
         @if(\Auth::user()->hasRole('view-products'))
         <li class="nav-item">
-          <a class="nav-link text-white @if(\Request::route()->getName() == "product") active @endif" href="{{route('product')}}">
+          <a class="nav-link text-white @if(str_contains(url()->current(),'product')) active @endif" href="{{route('product')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">inventory</i>
             </div>
@@ -116,7 +116,7 @@
         
         @if(\Auth::user()->hasRole('view-certifications'))
         <li class="nav-item">
-          <a class="nav-link text-white @if(\Request::route()->getName() == "certification") active @endif" href="{{route('certification')}}">
+          <a class="nav-link text-white @if(str_contains(url()->current(),'certification')) active @endif" href="{{route('certification')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">workspace_premium</i>
             </div>
@@ -127,7 +127,7 @@
 
         @if(\Auth::user()->hasRole('view-gallery'))
         <li class="nav-item">
-          <a class="nav-link text-white @if(\Request::route()->getName() == "gallery") active @endif" href="{{route('gallery')}}">
+          <a class="nav-link text-white @if(str_contains(url()->current(),'gallery')) active @endif" href="{{route('gallery')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">photo</i>
             </div>
