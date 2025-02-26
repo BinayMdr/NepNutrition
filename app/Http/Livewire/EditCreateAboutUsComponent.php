@@ -10,20 +10,23 @@ class EditCreateAboutUsComponent extends Component
 {
     use WithFileUploads;
     public $aboutUs;
-    public $heading1;
-    public $heading2;
-    public $heading3;
+    public $heading;
+    public $subHeading1;
     public $text1;
+    public $image1;
+    public $subHeading2;
     public $text2;
+    public $image2;
+    public $subHeading3;
     public $text3;
-    public $topBanner;
-    public $showLowerBanner = false;
-    public $lowerBanner;
-    public $quote;
-    public $author;
-    public $designation;
+    public $image3;
+    public $subHeading4;
+    public $text4;
+    public $image4;
+    public $heading3;
+    public $heading1;
+    public $subText;
     public $error;
-    public $lowerBannerCopy;
 
     public function updated($field)
     {
@@ -33,17 +36,17 @@ class EditCreateAboutUsComponent extends Component
     public function mount()
     {
         $this->aboutUs = AboutUs::first();
-        $this->heading1 = $this->aboutUs?->heading_1;
-        $this->heading2 = $this->aboutUs?->heading_2;
-        $this->heading3 = $this->aboutUs?->heading_3;
+        $this->heading = $this->aboutUs?->heading;
+        $this->subHeading1 = $this->aboutUs?->sub_heading_1;
         $this->text1 = $this->aboutUs?->text_1;
+        $this->subHeading2 = $this->aboutUs?->sub_heading_2;
         $this->text2 = $this->aboutUs?->text_2;
+        $this->subHeading3 = $this->aboutUs?->sub_heading_3;
         $this->text3 = $this->aboutUs?->text_3;
-        $this->showLowerBanner = $this->aboutUs?->show_lower_banner ?? false;
-        $this->quote = $this->aboutUs?->quote;
-        $this->author = $this->aboutUs?->author;
-        $this->designation = $this->aboutUs?->designation;
-        $this->lowerBannerCopy = $this->aboutUs?->lower_banner;
+        $this->subHeading4 = $this->aboutUs?->sub_heading_4;
+        $this->text4 = $this->aboutUs?->text_4;
+        $this->heading1 = $this->aboutUs?->heading_1;
+        $this->subText = $this->aboutUs?->sub_text;
     }
 
     public function render()
@@ -55,46 +58,51 @@ class EditCreateAboutUsComponent extends Component
     {   
         if(\Auth::user()->hasRole('edit-about-us') || \Auth::user()->hasRole('add-about-us'))
         { 
-            $validateData = [
-                'heading1' => 'required',
-                'heading2' => 'required',
-                'heading3' => 'required',
-                'text1' => 'required',
-                'text2' => 'required',
-                'text3' => 'required',
-                'showLowerBanner' => 'required' 
-            ];
-
-            if(is_null($this->aboutUs)) $validateData['topBanner'] = 'required';
-
-            $this->validate($validateData);
-
-            
-            if(!is_null($this->topBanner))
+                    
+            if(!is_null($this->image1))
             {
-                $top_banner_image = 'bg-'.time().'.'.$this->topBanner->extension(); 
-                $top_banner_image_path = $this->topBanner->storeAs('public/uploads/about-us',$top_banner_image);
+                $first_image = 'bg-'.time().'.'.$this->image1->extension(); 
+                $first_image_path = $this->image1->storeAs('public/uploads/about-us',$first_image);
             }
             
-            if(!is_null($this->lowerBanner))
+            if(!is_null($this->image2))
             {
-                $lower_banner_image = 'bg-'.time().'.'.$this->lowerBanner->extension(); 
-                $lower_banner_image_path = $this->lowerBanner->storeAs('public/uploads/about-us',$lower_banner_image);
+                $second_image = 'bg-'.time().'.'.$this->image2->extension(); 
+                $second_image_path = $this->image2->storeAs('public/uploads/about-us',$second_image);
             }
+            
+            if(!is_null($this->image3))
+            {
+                $third_image = 'bg-'.time().'.'.$this->image3->extension(); 
+                $third_image_path = $this->image3->storeAs('public/uploads/about-us',$third_image);
+            }
+            
+            if(!is_null($this->image4))
+            {
+                $fourth_image = 'bg-'.time().'.'.$this->image4->extension(); 
+                $fourth_image_path = $this->image4->storeAs('public/uploads/about-us',$fourth_image);
+            }
+            
+          
 
             $data = [
+                'heading' => $this->heading,
                 'heading_1' => $this->heading1,
-                'heading_2' => $this->heading2,
-                'heading_3' => $this->heading3,
+                'sub_text' => $this->subText,
+                'sub_heading_1' => $this->subHeading1,
                 'text_1' => $this->text1,
+                'image_1' => !is_null($this->image1) ? str_replace("public/","",$first_image_path) : $this->aboutUs->image_1,
+                'sub_heading_2' => $this->subHeading2,
                 'text_2' => $this->text2,
+                'image_2' => !is_null($this->image2) ? str_replace("public/","",$second_image_path) : $this->aboutUs->image_2,
+                'sub_heading_3' => $this->subHeading3,
                 'text_3' => $this->text3,
-                'top_banner' => !is_null($this->topBanner) ? str_replace("public/","",$top_banner_image_path) : $this->aboutUs->top_banner,
-                'show_lower_banner' => $this->showLowerBanner,
-                'author' => $this->author,
-                'designation' => $this->designation,
-                'quote' => $this->quote,
-                'lower_banner' => !is_null($this->lowerBanner) ? str_replace("public/","",$lower_banner_image_path) : $this->lowerBannerCopy,
+                'image_3' => !is_null($this->image3) ? str_replace("public/","",$third_image_path) : $this->aboutUs->image_3,
+                'sub_heading_4' => $this->subHeading4,
+                'text_4' => $this->text4,
+                'image_4' => !is_null($this->image4) ? str_replace("public/","",$fourth_image_path) : $this->aboutUs->image_4,
+
+  
             ];
 
             if(is_null($this->aboutUs)) AboutUs::create($data);
@@ -106,15 +114,20 @@ class EditCreateAboutUsComponent extends Component
         return back();
     }
 
-    public function removeLowerBannerFromDB()
-    {
-        $this->lowerBannerCopy = null;
-        $this->aboutUs->lower_banner = null;
+   public function removeImage($imageIndex)
+   {
+     if($imageIndex == "image1") $this->image1 = null;
+     elseif($imageIndex == "image2") $this->image2 = null;
+     elseif($imageIndex == "image3") $this->image3 = null;
+     else $this->image4 = null;
+   }
 
-    }
-
-    public function removeLowerBanner()
-    {
-        $this->lowerBanner = null;
-    }
+   public function removeImageFromDB($imageIndex)
+   {
+    
+    if($imageIndex == "image1") $this->aboutUs->update(["image_1" => null]);
+    elseif($imageIndex == "image2") $this->aboutUs->update(["image_2" => null]);
+    elseif($imageIndex == "image3") $this->aboutUs->update(["image_3" => null]);
+    else $this->aboutUs->update(["image_4" => null]);
+   }
 }

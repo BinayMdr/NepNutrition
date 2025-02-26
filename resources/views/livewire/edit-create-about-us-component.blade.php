@@ -44,13 +44,63 @@
                 
 
                   <div class="row mb-6">
-                    <div class="col-6">
-                      <label class="form-label">Heading One</label>
+                    <div class="col-4">
+                      <label class="form-label">Heading</label>
                       <div class="input-group input-group-outline">
-                        <input type="text" class="form-control" name="heading_1" wire:model.lazy="heading1" autocomplete="off">
+                        <input type="text" class="form-control" name="heading" wire:model.lazy="heading" autocomplete="off">
                       </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-4">
+                      <label class="form-label">Heading One</label>
+                      <div class="input-group input-group-outline">
+                        <input type="text" class="form-control" name="heading1" wire:model.lazy="heading1" autocomplete="off">
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <label class="form-label">Sub Text</label>
+                      <div class="input-group input-group-outline">
+                        <textarea type="text" class="form-control" style="resize:none" name="subText" wire:model.lazy="subText" autocomplete="off" rows="3">{{$subText}}</textarea>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <div class="row mb-6">
+                   <div class="col-4"> 
+                    <div class="my-4" style="width: 100%; height: 100%; overflow: hidden; position:relative">
+                      @if($image1)
+                        <img src="{{ $image1->temporaryUrl() }}" width="50%" height="50%">
+                        <button type="button" wire:click="removeImage('image1')" style="position: absolute; top: -10px; right: 120px; background: none; border: none; outline: none; cursor: pointer; font-weight: bold;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                            <path d="M10.354 4.354a.5.5 0 1 1 .708.708L8.707 8l2.354 2.354a.5.5 0 0 1-.708.708L8 8.707l-2.354 2.354a.5.5 0 1 1-.708-.708L7.293 8 4.939 5.646a.5.5 0 0 1 .708-.708L8 7.293l2.354-2.354a.5.5 0 0 1 .708 0z"/>
+                          </svg>
+                        </button>
+                      @elseif(!is_null($aboutUs) && !is_null($aboutUs->image_1))
+                          <img src="{{ env('APP_URL').'storage/'.$aboutUs->image_1 }}" width="50%" height="50%">
+                          <button type="button" wire:click="removeImageFromDB('image1')" style="position: absolute; top: -10px; right: 120px; background: none; border: none; outline: none; cursor: pointer; font-weight: bold;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                              <path d="M10.354 4.354a.5.5 0 1 1 .708.708L8.707 8l2.354 2.354a.5.5 0 0 1-.708.708L8 8.707l-2.354 2.354a.5.5 0 1 1-.708-.708L7.293 8 4.939 5.646a.5.5 0 0 1 .708-.708L8 7.293l2.354-2.354a.5.5 0 0 1 .708 0z"/>
+                            </svg>
+                          </button>
+                      
+                      
+                      @endif
+                        <div class="mt-2">
+                        <label class="form-label">Image One</label>
+                        <input type="file" class="form-control" name="image1" wire:model.lazy="image1" accept=".svg, image/svg+xml">
+                       
+                        </div>
+                    </div>
+                    </div>
+
+                  <div class="col-4">
+                    <label class="form-label">Sub Heading One</label>
+                    <div class="input-group input-group-outline">
+                      <input type="text" class="form-control" name="sub_heading_1" wire:model.lazy="subHeading1" autocomplete="off">
+                    </div>
+                  </div>
+                    <div class="col-4">
                       <label class="form-label">Text One</label>
                       <div class="input-group input-group-outline">
                         <textarea type="text" class="form-control" style="resize:none" name="text_1" wire:model.lazy="text1" autocomplete="off" rows="3">{{$text1}}</textarea>
@@ -59,111 +109,140 @@
                   </div>
 
                   <div class="row mb-6">
-                    <div class="col-6">
-                      <label class="form-label">Heading Two</label>
-                      <div class="input-group input-group-outline">
-                        <input type="text" class="form-control" name="heading_2" wire:model.lazy="heading2" autocomplete="off">
-                      </div>
-                    </div>
-                    <div class="col-6">
-                      <label class="form-label">Text Two</label>
-                      <div class="input-group input-group-outline">
-                        <textarea type="text" class="form-control" style="resize:none" name="text_2" wire:model.lazy="text2" autocomplete="off" rows="3">{{$text2}}</textarea>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="row mb-6">
-                    <div class="col-6">
-                      <label class="form-label">Heading Three</label>
-                      <div class="input-group input-group-outline">
-                        <input type="text" class="form-control" name="heading_3" wire:model.lazy="heading3" autocomplete="off">
-                      </div>
-                    </div>
-                    <div class="col-6">
-                      <label class="form-label">Text Three</label>
-                      <div class="input-group input-group-outline">
-                        <textarea type="text" class="form-control" style="resize:none" name="text_3" wire:model.lazy="text3" autocomplete="off" rows="3">{{$text3}}</textarea>
-                      </div>
-                    </div>
-                  </div>
-                  
-
-                  <div class="row mb-4">
-                    <div class="col-6">
-                      <div class="my-4" style="width: 100%; height: 150px; overflow: hidden;">
-                        @if ($topBanner)
-                          <img src="{{ $topBanner->temporaryUrl() }}" width="100%" height="100%">
-                        @elseif(!is_null($aboutUs))
-                            <img src="{{ env('APP_URL').'storage/'.$aboutUs->top_banner }}" width="100%" height="100%">
-                        @endif
-                      </div>      
-                      <div>
-                        <label class="form-label">Top Banner</label>
-                        <input type="file" class="form-control" name="topBanner" wire:model.lazy="topBanner">
-                      </div> 
-                    </div>
-
-                    <div class="col-6">
-                      <div class="form-check form-switch d-flex align-items-center ps-6 pt-4 mt-4">
-                        <br>
-                        <input class="form-check-input" type="checkbox" id="status" name="status" @if($showLowerBanner) checked @endif wire:model="showLowerBanner">
-                        <label class="form-check-label mt-2 ms-2" for="status">Show Lower Banner</label>
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <div class="row mb-6">
-                    <div class="col-6">
-                      <label class="form-label">Author</label>
-                      <div class="input-group input-group-outline">
-                        <input type="text" class="form-control" name="author" wire:model.lazy="author" autocomplete="off">
-                      </div>
-                    </div>
-                    <div class="col-6">
-                      <label class="form-label">Designation</label>
-                      <div class="input-group input-group-outline">
-                        <input type="text" class="form-control" name="designation" wire:model.lazy="designation" autocomplete="off">
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="row mb-6">
-                    <div class="col-6">
-                      <label class="form-label">Quote</label>
-                      <div class="input-group input-group-outline">
-                        <textarea type="text" class="form-control" style="resize:none" name="quote" wire:model.lazy="quote" autocomplete="off" rows="8">{{$quote}}</textarea>
-                      </div>
-                    </div>
-
-                    <div class="col-6">
-                      <div class="my-4" style="width: 100%; height: 150px; overflow: hidden; position:relative">
-                        
-                        @if ($lowerBanner)
-                          <img src="{{ $lowerBanner->temporaryUrl() }}" width="100%" height="100%">
-                          <button type="button" wire:click="removeLowerBanner" style="position: relative; top: -150px; right: 0px; background: none; border: none; outline: none; cursor: pointer; font-weight: bold;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                              <path d="M10.354 4.354a.5.5 0 1 1 .708.708L8.707 8l2.354 2.354a.5.5 0 0 1-.708.708L8 8.707l-2.354 2.354a.5.5 0 1 1-.708-.708L7.293 8 4.939 5.646a.5.5 0 0 1 .708-.708L8 7.293l2.354-2.354a.5.5 0 0 1 .708 0z"/>
-                            </svg>
-                          </button>
-                        @elseif(!is_null($aboutUs) && !is_null($aboutUs->lower_banner))
-                            <img src="{{ env('APP_URL').'storage/'.$aboutUs->lower_banner }}" width="100%" height="100%">
-                            <button type="button" wire:click="removeLowerBannerFromDB" style="position: relative; top: -150px; right: 0px; background: none; border: none; outline: none; cursor: pointer; font-weight: bold;">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                                <path d="M10.354 4.354a.5.5 0 1 1 .708.708L8.707 8l2.354 2.354a.5.5 0 0 1-.708.708L8 8.707l-2.354 2.354a.5.5 0 1 1-.708-.708L7.293 8 4.939 5.646a.5.5 0 0 1 .708-.708L8 7.293l2.354-2.354a.5.5 0 0 1 .708 0z"/>
-                              </svg>
-                            </button>
-                        @endif
+                    <div class="col-4"> 
+                     <div class="my-4" style="width: 100%; height: 100%; overflow: hidden; position:relative">
+                      
+                      @if ($image2)
+                         <img src="{{ $image2->temporaryUrl() }}" width="50%" height="50%">
+                         <button type="button" wire:click="removeImage" style="position: absolute; top: -10px; right: 120px; background: none; border: none; outline: none; cursor: pointer; font-weight: bold;">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                             <path d="M10.354 4.354a.5.5 0 1 1 .708.708L8.707 8l2.354 2.354a.5.5 0 0 1-.708.708L8 8.707l-2.354 2.354a.5.5 0 1 1-.708-.708L7.293 8 4.939 5.646a.5.5 0 0 1 .708-.708L8 7.293l2.354-2.354a.5.5 0 0 1 .708 0z"/>
+                           </svg>
+                         </button>
+                      
+                      @elseif(!is_null($aboutUs) && !is_null($aboutUs->image_2))
+                      <img src="{{ env('APP_URL').'storage/'.$aboutUs->image_2 }}" width="50%" height="50%">
+                      <button type="button" wire:click="removeImageFromDB('image2')" style="position: absolute; top: -10px; right: 120px; background: none; border: none; outline: none; cursor: pointer; font-weight: bold;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                          <path d="M10.354 4.354a.5.5 0 1 1 .708.708L8.707 8l2.354 2.354a.5.5 0 0 1-.708.708L8 8.707l-2.354 2.354a.5.5 0 1 1-.708-.708L7.293 8 4.939 5.646a.5.5 0 0 1 .708-.708L8 7.293l2.354-2.354a.5.5 0 0 1 .708 0z"/>
+                        </svg>
+                      </button>
                        
-                      </div>      
-                      <div>
-                        <label class="form-label">Lower Banner</label>
-                        <input type="file" class="form-control" name="topBanner" wire:model.lazy="lowerBanner">
-                      </div> 
-                    </div>
+                       @endif
+                         
+                       <div class="mt-2">
+                         <label class="form-label">Image Two</label>
+                         <input type="file" class="form-control" name="image2" wire:model.lazy="image2" accept=".svg, image/svg+xml">
+                       </div> 
+ 
+                     </div>
+                     </div>
+ 
+                   <div class="col-4">
+                     <label class="form-label">Sub Heading Two</label>
+                     <div class="input-group input-group-outline">
+                       <input type="text" class="form-control" name="sub_heading_2" wire:model.lazy="subHeading2" autocomplete="off">
+                     </div>
+                   </div>
+                     <div class="col-4">
+                       <label class="form-label">Text Two</label>
+                       <div class="input-group input-group-outline">
+                         <textarea type="text" class="form-control" style="resize:none" name="text_2" wire:model.lazy="text2" autocomplete="off" rows="3">{{$text2}}</textarea>
+                       </div>
+                     </div>
+                   </div>
 
-                  </div>
+                   <div class="row mb-6">
+                    <div class="col-4"> 
+                     <div class="my-4" style="width: 100%; height: 100%; overflow: hidden; position:relative">
+                         
+                      @if ($image3)
+                         <img src="{{ $image3->temporaryUrl() }}" width="50%" height="50%">
+                         <button type="button" wire:click="removeImage" style="position: absolute; top: -10px; right: 120px; background: none; border: none; outline: none; cursor: pointer; font-weight: bold;">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                             <path d="M10.354 4.354a.5.5 0 1 1 .708.708L8.707 8l2.354 2.354a.5.5 0 0 1-.708.708L8 8.707l-2.354 2.354a.5.5 0 1 1-.708-.708L7.293 8 4.939 5.646a.5.5 0 0 1 .708-.708L8 7.293l2.354-2.354a.5.5 0 0 1 .708 0z"/>
+                           </svg>
+                         </button>
+                      @elseif(!is_null($aboutUs) && !is_null($aboutUs->image_3))
+                           <img src="{{ env('APP_URL').'storage/'.$aboutUs->image_3 }}" width="50%" height="50%">
+                           <button type="button" wire:click="removeImageFromDB('image3')" style="position: absolute; top: -10px; right: 120px; background: none; border: none; outline: none; cursor: pointer; font-weight: bold;">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                               <path d="M10.354 4.354a.5.5 0 1 1 .708.708L8.707 8l2.354 2.354a.5.5 0 0 1-.708.708L8 8.707l-2.354 2.354a.5.5 0 1 1-.708-.708L7.293 8 4.939 5.646a.5.5 0 0 1 .708-.708L8 7.293l2.354-2.354a.5.5 0 0 1 .708 0z"/>
+                             </svg>
+                           </button>
+                       
+                       @endif
+                         
+                       <div class="mt-2">
+                         <label class="form-label">Image Three</label>
+                         <input type="file" class="form-control" name="image3" wire:model.lazy="image3" accept=".svg, image/svg+xml">
+                       </div> 
+ 
+                     </div>
+                     </div>
+ 
+                   <div class="col-4">
+                     <label class="form-label">Sub Heading Three</label>
+                     <div class="input-group input-group-outline">
+                       <input type="text" class="form-control" name="sub_heading_3" wire:model.lazy="subHeading3" autocomplete="off">
+                     </div>
+                   </div>
+                     <div class="col-4">
+                       <label class="form-label">Text Three</label>
+                       <div class="input-group input-group-outline">
+                         <textarea type="text" class="form-control" style="resize:none" name="text_3" wire:model.lazy="text3" autocomplete="off" rows="3">{{$text2}}</textarea>
+                       </div>
+                     </div>
+                   </div>
+
+
+                   <div class="row mb-2">
+                    <div class="col-4"> 
+                     <div class="my-4" style="width: 100%; height: 100%; overflow: hidden; position:relative">
+                         
+                      @if ($image4)
+                         <img src="{{ $image4->temporaryUrl() }}" width="50%" height="50%">
+                         <button type="button" wire:click="removeImage" style="position: absolute; top: -10px; right: 120px; background: none; border: none; outline: none; cursor: pointer; font-weight: bold;">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                             <path d="M10.354 4.354a.5.5 0 1 1 .708.708L8.707 8l2.354 2.354a.5.5 0 0 1-.708.708L8 8.707l-2.354 2.354a.5.5 0 1 1-.708-.708L7.293 8 4.939 5.646a.5.5 0 0 1 .708-.708L8 7.293l2.354-2.354a.5.5 0 0 1 .708 0z"/>
+                           </svg>
+                         </button>
+                      @elseif(!is_null($aboutUs) && !is_null($aboutUs->image_4))
+                      <img src="{{ env('APP_URL').'storage/'.$aboutUs->image_4 }}" width="50%" height="50%">
+                      <button type="button" wire:click="removeImageFromDB('image4')" style="position: absolute; top: -10px; right: 120px; background: none; border: none; outline: none; cursor: pointer; font-weight: bold;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                          <path d="M10.354 4.354a.5.5 0 1 1 .708.708L8.707 8l2.354 2.354a.5.5 0 0 1-.708.708L8 8.707l-2.354 2.354a.5.5 0 1 1-.708-.708L7.293 8 4.939 5.646a.5.5 0 0 1 .708-.708L8 7.293l2.354-2.354a.5.5 0 0 1 .708 0z"/>
+                        </svg>
+                      </button>
+                       
+                     
+                       @endif
+                         
+                       <div class="mt-2">
+                         <label class="form-label">Image Four</label>
+                         <input type="file" class="form-control" name="image4" wire:model.lazy="image4" accept=".svg, image/svg+xml">
+                       </div> 
+ 
+                     </div>
+                     </div>
+ 
+                   <div class="col-4">
+                     <label class="form-label">Sub Heading Four</label>
+                     <div class="input-group input-group-outline">
+                       <input type="text" class="form-control" name="sub_heading_4" wire:model.lazy="subHeading4" autocomplete="off">
+                     </div>
+                   </div>
+                     <div class="col-4">
+                       <label class="form-label">Text Four</label>
+                       <div class="input-group input-group-outline">
+                         <textarea type="text" class="form-control" style="resize:none" name="text_4" wire:model.lazy="text4" autocomplete="off" rows="3">{{$text4}}</textarea>
+                       </div>
+                     </div>
+                   </div>
+
+
+
+                  
                   @if(\Auth::user()->hasRole('add-about-us') || \Auth::user()->hasRole('edit-about-us') )
                   <div class="text-center">
                     <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">@if(!is_null($aboutUs)) Update @else Add @endif About Us</button>
