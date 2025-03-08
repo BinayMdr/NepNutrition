@@ -23,6 +23,7 @@ class SettingComponent extends Component
     public $chatScript;
     public $error;
     public $tempBannerImage;
+    public $tempMidBannerImage;
 
     public function mount()
     {
@@ -127,6 +128,18 @@ class SettingComponent extends Component
                     'key' => 'banner-image'],
                     [
                         'value' => str_replace("public/","",$banner_image_path)
+                    ]
+                );
+            }
+
+            if($this->tempMidBannerImage != null)
+            {
+                $mid_banner_image = 'loading-'.time().'.'.$this->tempMidBannerImage->extension(); 
+                $mid_banner_image_path = $this->tempMidBannerImage->storeAs('public/uploads/setting',$mid_banner_image);
+                Setting::updateOrCreate([
+                    'key' => 'mid-banner-image'],
+                    [
+                        'value' => str_replace("public/","",$mid_banner_image_path)
                     ]
                 );
             }

@@ -109,7 +109,7 @@
                     <h4 class="text-white fw-normal mb-0">Expert-curated recommendations just for you</h4>
                 </div>
                 <div class="col-md-6 col-12 text-md-end text-center">
-                        <button class="btn btn-burnt-yellow ">
+                        <button class="btn btn-burnt-yellow" onclick="window.location.href='{{ route('frontend.products') }}'">
         Start My Journey
     </button>
 

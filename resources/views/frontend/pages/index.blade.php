@@ -288,7 +288,7 @@
 
                 </div>
                 <div class="col-md-6 col-12 text-center">
-                    <img src="{{asset('assets/frontend/image/cta_image.png')}}" alt="cta_image" class="img-fluid">
+                    <img src="{{ env('APP_URL').'storage/'.$settings['mid-banner-image'] }}" alt="cta_image" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -298,9 +298,13 @@
 
 <!-- Modal PopUp -->
 
+<?php
+    $sessionValue = Session::get('modal_shown') == $popUp->name."-".$popUp->id;
+    
+?>
 
 
-@if(!is_null($popUp) && Session::get('modal_shown') != "{{$popUp->name}}-{{$popUp->id}}")
+@if(!is_null($popUp) && !$sessionValue)
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true"
         data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog modal-dialog-centered modal-xl flex-column justify-content-center popup-modal">

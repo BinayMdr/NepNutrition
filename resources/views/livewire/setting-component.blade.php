@@ -105,16 +105,33 @@
                   </div>
 
                   <div class="col-6">
-                    <label class="form-label">Chat Script</label>
-                    <div class="input-group input-group-outline">
-                      <textarea type="text" style="resize: none;" class="form-control" name="chatScript" wire:model.lazy="chatScript" autocomplete="off" rows="12" style="resiez:none">{{$chatScript}}</textarea>
-                    </div>
+                    <div class="my-4" style="width: 100%; height: 150px; overflow: hidden;">
+                      @if ($tempMidBannerImage)
+                        <img src="{{ $tempMidBannerImage->temporaryUrl() }}" width="100%" height="100%">
+                      @elseif(count($settings) > 0)
+                          <img src="{{ env('APP_URL').'storage/'.$settings['mid-banner-image'] }}" width="100%" height="100%">
+                      @endif
+                    </div>      
+                    <div>
+                      <label class="form-label">Mid Banner Image</label>
+                      <input type="file" class="form-control" name="bannerImage" wire:model.lazy="tempMidBannerImage" accept="image/*">
+                    </div> 
                   </div>
 
-
                 </div>
+
+                <div class="row mb-6">
+                  <div class="col-6">
+                    <label class="form-label">Chat Script</label>
+                    <div class="input-group input-group-outline">
+                      <textarea type="text" style="resize: none;" class="form-control" name="chatScript" wire:model.lazy="chatScript" autocomplete="off" rows="4" style="resiez:none">{{$chatScript}}</textarea>
+                    </div>
+                  </div>
+                </div>
+
+
                 @if(\Auth::user()->hasRole('add-settings') || \Auth::user()->hasRole('edit-settings') )
-                <div class="text-center">
+                <div class="text-center mt-6">
                   <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Update Settings</button>
                 </div>
                 @endif
