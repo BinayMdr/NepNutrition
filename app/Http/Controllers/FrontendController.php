@@ -30,12 +30,24 @@ class FrontendController extends Controller
       $popUp = PopUp::where('is_enabled',true)
                       ->orderBy('order')->first();
 
-      return view('frontend.pages.index',compact('banners','settings','reviews','popUp'));
+      $products = Product::where('is_enabled',true)
+                    ->where('show_in_home_page',true)
+                    ->orderBy('order')
+                    ->limit(6)
+                    ->get();
+
+      return view('frontend.pages.index',compact('banners','settings','reviews','popUp','products'));
     }
 
-    public function products()
+    public function products(Request $request)
     {
-       return view('frontend.pages.products');
+      $settings = $this->getSettings();
+
+      $order = $request->query('order') ?? 'asc';
+      
+      $products = Product::where('is_enabled',true)
+                    ->orderBy('name',$order)->get();
+      return view('frontend.pages.products',compact('settings','products','order'));
     }
 
     public function authenticity()
@@ -59,9 +71,18 @@ class FrontendController extends Controller
       return view('frontend.pages.gallery',compact('settings','galleries'));
     }
 
-    public function product_details(Product $product)
+    public function product_details($slug)
     {
-       return view('frontend.pages.product-detail');
+      $settings = $this->getSettings();
+      $product = Product::where('slug',$slug)->first();
+
+      $relatedProducts = Product::where('id', '!=', $product->id)
+                          ->where('is_enabled',true)
+                          ->inRandomOrder()
+                          ->limit(4)
+                          ->get();
+
+      return view('frontend.pages.product-detail',compact('settings','product','relatedProducts'));
     }
 
     public function about_us( )

@@ -33,7 +33,7 @@ Route::get('/products',[FrontendController::class,'products'])->name('frontend.p
 Route::get('/gallery',[FrontendController::class,'gallery'])->name('frontend.gallery');
 Route::get('/conatct-us',[FrontendController::class,'contact_us'])->name('frontend.contact_us');
 Route::get('/authenticity',[FrontendController::class,'authenticity'])->name('frontend.authenticity');
-Route::get('/products/{products}',[FrontendController::class,'product_details'])->name('frontend.product_details');
+Route::get('/products/{slug}',[FrontendController::class,'product_details'])->name('frontend.product_details');
 Route::get('/about-us',[FrontendController::class,'about_us'])->name('frontend.about_us');
 
 Route::post('/send-message',[FrontendController::class,'send_message'])->name('frontend.send_message');

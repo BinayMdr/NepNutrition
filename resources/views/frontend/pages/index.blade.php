@@ -101,21 +101,21 @@
             <div class="row">
                 <div class="col-md-4 col-12 text-center">
                     <svg viewBox="0 0 62 80" width="62" class="mb-5">
-                        <use href="{{asset('assets/frontend/image/icons.svg')}}#icon-authorized"></use>
+                        <use href="{{asset('assets/frontend/image/icons.svg')}}#icon-love"></use>
                     </svg>
                     <h3 class="text-white text-center">Authorized Products</h3>
                     <p class="text-white text-center">We ensure 100% genuineness in every item</p>
                 </div>
                 <div class="col-md-4 col-12 text-center">
                     <svg viewBox="0 0 62 80" width="62" class="mb-5">
-                        <use href="{{asset('assets/frontend/image/icons.svg')}}#icon-premium-quality"></use>
+                        <use href="{{asset('assets/frontend/image/icons.svg')}}#icon-love"></use>
                     </svg>
                     <h3 class="text-white text-center">Premium Quality Guarantee</h3>
                     <p class="text-white text-center">We ensure top-tier quality with free delivery for your convenience</p>
                 </div>
                 <div class="col-md-4 col-12 text-center">
                     <svg viewBox="0 0 62 80" width="62" class="mb-5">
-                        <use href="{{asset('assets/frontend/image/icons.svg')}}#icon-best"></use>
+                        <use href="{{asset('assets/frontend/image/icons.svg')}}#icon-love"></use>
                     </svg>
                     <h3 class="text-white text-center">Genuine Products Only</h3>
                     <p class="text-white text-center">Authentic items guaranteed with hassle-free returns and exchanges</p>
@@ -136,113 +136,30 @@
                 </a>
             </div>
             <div class="latest-product-slider">
-                <div>
-    <div class="product-card home d-flex align-items-center">
-        <div class="product-info-wrapper ms-auto">
-            <div class="product-info">
-                <div class="product-image">
-                    <img src="./assets/images/lproduct.png" alt="Gold Whey" class="product-image">
+                @foreach($products as $product)
+                    <div>
+                        <div class="product-card home d-flex align-items-center">
+                            <div class="product-info-wrapper ms-auto">
+                                <div class="product-info">
+                                    <div class="product-image">
+                                        <img src="{{ env('APP_URL').'storage/'.$product->image }}" alt="{{$product->name}}" class="product-image">
+                                    </div>
+                                    <div class="content">
+                                        <h4 class="product-title text-white fw-medium mb-3">{{$product->name}}</h4>
+                                        <p class="product-subtitle text-white mb-2">
+                                            @if($product->series != "" && $product->series != null) {{$product->series}} @endif</p>
+                                        <p class="product-price text-white fw-medium">
+                                            @if($product->price != "" && $product->price != null)NPR {{$product->price}} @endif</p>
+                                        <button class="btn btn-outline-light px-3 py-2" 
+                                        onclick="window.location.href='{{ route('frontend.product_details',['slug'=> $product->slug]) }}'" 
+                                        >View Product</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
-                <div class="content">
-                    <h4 class="product-title text-white fw-medium mb-3">Gold Whey</h4>
-                    <p class="product-subtitle text-white mb-2">Gold Standard</p>
-                    <p class="product-price text-white fw-medium">NPR XXXX</p>
-                    <button class="btn btn-outline-light px-3 py-2">View Product</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                @endforeach
 
-                <div>
-    <div class="product-card home d-flex align-items-center">
-        <div class="product-info-wrapper ms-auto">
-            <div class="product-info">
-                <div class="product-image">
-                    <img src="./assets/images/lproduct.png" alt="Gold Whey" class="product-image">
-                </div>
-                <div class="content">
-                    <h4 class="product-title text-white fw-medium mb-3">Gold Whey</h4>
-                    <p class="product-subtitle text-white mb-2">Gold Standard</p>
-                    <p class="product-price text-white fw-medium">NPR XXXX</p>
-                    <button class="btn btn-outline-light px-3 py-2">View Product</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-                <div>
-    <div class="product-card home d-flex align-items-center">
-        <div class="product-info-wrapper ms-auto">
-            <div class="product-info">
-                <div class="product-image">
-                    <img src="./assets/images/lproduct.png" alt="Gold Whey" class="product-image">
-                </div>
-                <div class="content">
-                    <h4 class="product-title text-white fw-medium mb-3">Gold Whey</h4>
-                    <p class="product-subtitle text-white mb-2">Gold Standard</p>
-                    <p class="product-price text-white fw-medium">NPR XXXX</p>
-                    <button class="btn btn-outline-light px-3 py-2">View Product</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-                <div>
-    <div class="product-card home d-flex align-items-center">
-        <div class="product-info-wrapper ms-auto">
-            <div class="product-info">
-                <div class="product-image">
-                    <img src="./assets/images/lproduct.png" alt="Gold Whey" class="product-image">
-                </div>
-                <div class="content">
-                    <h4 class="product-title text-white fw-medium mb-3">Gold Whey</h4>
-                    <p class="product-subtitle text-white mb-2">Gold Standard</p>
-                    <p class="product-price text-white fw-medium">NPR XXXX</p>
-                    <button class="btn btn-outline-light px-3 py-2">View Product</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-                <div>
-    <div class="product-card home d-flex align-items-center">
-        <div class="product-info-wrapper ms-auto">
-            <div class="product-info">
-                <div class="product-image">
-                    <img src="./assets/images/lproduct.png" alt="Gold Whey" class="product-image">
-                </div>
-                <div class="content">
-                    <h4 class="product-title text-white fw-medium mb-3">Gold Whey</h4>
-                    <p class="product-subtitle text-white mb-2">Gold Standard</p>
-                    <p class="product-price text-white fw-medium">NPR XXXX</p>
-                    <button class="btn btn-outline-light px-3 py-2">View Product</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-                <div>
-    <div class="product-card home d-flex align-items-center">
-        <div class="product-info-wrapper ms-auto">
-            <div class="product-info">
-                <div class="product-image">
-                    <img src="./assets/images/lproduct.png" alt="Gold Whey" class="product-image">
-                </div>
-                <div class="content">
-                    <h4 class="product-title text-white fw-medium mb-3">Gold Whey</h4>
-                    <p class="product-subtitle text-white mb-2">Gold Standard</p>
-                    <p class="product-price text-white fw-medium">NPR XXXX</p>
-                    <button class="btn btn-outline-light px-3 py-2">View Product</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
             </div>
         </div>
