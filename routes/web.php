@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CertificationController;
 use App\Http\Controllers\CustomerReviewController;
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
@@ -27,6 +28,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/',[FrontendController::class,'index'])->name('frontend.index');
+Route::get('/products',[FrontendController::class,'products'])->name('frontend.products');
+Route::get('/gallery',[FrontendController::class,'gallery'])->name('frontend.gallery');
+Route::get('/conatct-us',[FrontendController::class,'contact_us'])->name('frontend.contact_us');
+Route::get('/authenticity',[FrontendController::class,'authenticity'])->name('frontend.authenticity');
+Route::get('/products/{products}',[FrontendController::class,'product_details'])->name('frontend.product_details');
+Route::get('/about-us',[FrontendController::class,'about_us'])->name('frontend.about_us');
+
+Route::post('/send-message',[FrontendController::class,'send_message'])->name('frontend.send_message');
+Route::post('/save-session', [FrontendController::class, 'save_session'])->name('frontend.save_session');
+
+
+
 Route::match(['get','post'],'/admin',[AuthController::class,'login'])->name('login');
 
 Route::group(['middleware'=>'auth','prefix' =>'admin'],function(){

@@ -79,31 +79,16 @@
                   </div>
 
                   <div class="col-6">
-                    <label class="form-label">Tik Tok Link</label>
-                    <div class="input-group input-group-outline">
-                      <input type="text" class="form-control" name="tikTokLink" wire:model.lazy="tiktokLink" autocomplete="off">
-                    </div>
-                  </div>
-                  
-                </div>
-
-                <div class="row mt-6">
-                  
-                  <div class="col-6">
                     <label class="form-label">Insta Link</label>
                     <div class="input-group input-group-outline">
                       <input type="text" class="form-control" name="instaLink" wire:model.lazy="instaLink" autocomplete="off">
                     </div>
                   </div>
-
-                  <div class="col-6">
-                    <label class="form-label">Youtube Link</label>
-                    <div class="input-group input-group-outline">
-                      <input type="text" class="form-control" name="youtubeLink" wire:model.lazy="youtubeLink" autocomplete="off">
-                    </div>
-                  </div>
+                  
+                  
                 </div>
 
+              
                 <div class="row mb-4 mt-6">
                   <div class="col-6">
                     <div class="my-4" style="width: 100%; height: 150px; overflow: hidden;">

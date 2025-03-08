@@ -19,7 +19,7 @@ class EditCreateGalleryComponent extends Component
     public function mount($gallery)
     {
         $this->gallery = $gallery;
-        $this->storedPhotos = Gallery::all(); 
+        $this->storedPhotos = Gallery::orderBy('id','desc')->get(); 
 
         foreach ($this->storedPhotos as $photo) {
             $this->storedCaptions[$photo->id] = $photo->caption;

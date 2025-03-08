@@ -17,7 +17,7 @@ class EditCreateCertificationComponent extends Component
     public function mount($certification)
     {
         $this->certification = $certification;
-        $this->storedPhotos = Certification::all(); 
+        $this->storedPhotos = Certification::orderBy('id','desc')->get(); 
     }
 
     public function updatedPhotos()

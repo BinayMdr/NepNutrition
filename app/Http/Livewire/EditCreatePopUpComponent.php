@@ -84,7 +84,7 @@ class EditCreatePopUpComponent extends Component
     {
         $this->validate([
             'name' => 'required',
-            'link' => 'required'
+            // 'link' => 'required'
         ]);
 
         if( PopUp::where('name',$this->name)

@@ -67,7 +67,7 @@
 
 
                   <div class="row mb-6">
-                   <div class="col-4"> 
+                   {{-- <div class="col-4"> 
                     <div class="my-4" style="width: 100%; height: 100%; overflow: hidden; position:relative">
                       @if($image1)
                         <img src="{{ $image1->temporaryUrl() }}" width="50%" height="50%">
@@ -92,15 +92,15 @@
                        
                         </div>
                     </div>
-                    </div>
+                    </div> --}}
 
-                  <div class="col-4">
+                  <div class="col-6">
                     <label class="form-label">Sub Heading One</label>
                     <div class="input-group input-group-outline">
                       <input type="text" class="form-control" name="sub_heading_1" wire:model.lazy="subHeading1" autocomplete="off">
                     </div>
                   </div>
-                    <div class="col-4">
+                    <div class="col-6">
                       <label class="form-label">Text One</label>
                       <div class="input-group input-group-outline">
                         <textarea type="text" class="form-control" style="resize:none" name="text_1" wire:model.lazy="text1" autocomplete="off" rows="3">{{$text1}}</textarea>
@@ -109,7 +109,7 @@
                   </div>
 
                   <div class="row mb-6">
-                    <div class="col-4"> 
+                    {{-- <div class="col-4"> 
                      <div class="my-4" style="width: 100%; height: 100%; overflow: hidden; position:relative">
                       
                       @if ($image2)
@@ -135,16 +135,16 @@
                          <input type="file" class="form-control" name="image2" wire:model.lazy="image2" accept=".svg, image/svg+xml">
                        </div> 
  
-                     </div>
-                     </div>
+                     </div> --}}
+                     {{-- </div> --}}
  
-                   <div class="col-4">
+                   <div class="col-6">
                      <label class="form-label">Sub Heading Two</label>
                      <div class="input-group input-group-outline">
                        <input type="text" class="form-control" name="sub_heading_2" wire:model.lazy="subHeading2" autocomplete="off">
                      </div>
                    </div>
-                     <div class="col-4">
+                     <div class="col-6">
                        <label class="form-label">Text Two</label>
                        <div class="input-group input-group-outline">
                          <textarea type="text" class="form-control" style="resize:none" name="text_2" wire:model.lazy="text2" autocomplete="off" rows="3">{{$text2}}</textarea>
@@ -153,7 +153,7 @@
                    </div>
 
                    <div class="row mb-6">
-                    <div class="col-4"> 
+                    {{-- <div class="col-4"> 
                      <div class="my-4" style="width: 100%; height: 100%; overflow: hidden; position:relative">
                          
                       @if ($image3)
@@ -179,15 +179,15 @@
                        </div> 
  
                      </div>
-                     </div>
+                     </div> --}}
  
-                   <div class="col-4">
+                   <div class="col-6">
                      <label class="form-label">Sub Heading Three</label>
                      <div class="input-group input-group-outline">
                        <input type="text" class="form-control" name="sub_heading_3" wire:model.lazy="subHeading3" autocomplete="off">
                      </div>
                    </div>
-                     <div class="col-4">
+                     <div class="col-6">
                        <label class="form-label">Text Three</label>
                        <div class="input-group input-group-outline">
                          <textarea type="text" class="form-control" style="resize:none" name="text_3" wire:model.lazy="text3" autocomplete="off" rows="3">{{$text2}}</textarea>
@@ -196,8 +196,8 @@
                    </div>
 
 
-                   <div class="row mb-2">
-                    <div class="col-4"> 
+                   <div class="row mb-6">
+                    {{-- <div class="col-4"> 
                      <div class="my-4" style="width: 100%; height: 100%; overflow: hidden; position:relative">
                          
                       @if ($image4)
@@ -224,15 +224,15 @@
                        </div> 
  
                      </div>
-                     </div>
+                     </div> --}}
  
-                   <div class="col-4">
+                   <div class="col-6">
                      <label class="form-label">Sub Heading Four</label>
                      <div class="input-group input-group-outline">
                        <input type="text" class="form-control" name="sub_heading_4" wire:model.lazy="subHeading4" autocomplete="off">
                      </div>
                    </div>
-                     <div class="col-4">
+                     <div class="col-6">
                        <label class="form-label">Text Four</label>
                        <div class="input-group input-group-outline">
                          <textarea type="text" class="form-control" style="resize:none" name="text_4" wire:model.lazy="text4" autocomplete="off" rows="3">{{$text4}}</textarea>
@@ -244,7 +244,7 @@
 
                   
                   @if(\Auth::user()->hasRole('add-about-us') || \Auth::user()->hasRole('edit-about-us') )
-                  <div class="text-center">
+                  <div class="text-center mt-4">
                     <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">@if(!is_null($aboutUs)) Update @else Add @endif About Us</button>
                   </div>
                   @endif
