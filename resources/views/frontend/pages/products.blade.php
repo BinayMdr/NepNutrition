@@ -1,4 +1,9 @@
 @extends('frontend.layout.master')
+@section('css')
+<link rel="stylesheet" href="{{asset('assets/frontend/css/product-detail.css')}}">
+@endsection
+
+
 @section('content')
 
 <section class="pageBanner position-relative d-flex align-items-center w-100 justify-content-center align-items-center overflow-hidden" id="pageBanner">

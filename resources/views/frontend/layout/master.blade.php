@@ -15,7 +15,7 @@
     
     
     <link rel="stylesheet" href="{{asset('assets/frontend/css/styles.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/product-detail.css')}}">
+    @yield('css')
     {{-- <link rel="stylesheet" href="css/@@css"> --}}
     
     <link rel="icon" type="image/png" href="{{asset('assets/favicon/favicon-96x96.png')}}" sizes="96x96" />
@@ -25,7 +25,7 @@
     <link rel="manifest" href="{{asset('assets/favicon/site.webmanifest')}}" />
 </head>
 <body>
-<nav class="header sticky-top bg-young-night shadow">
+<nav class="header sticky-top @if(\Route::currentRouteName() == 'frontend.index') is-index @else bg-young-night shadow @endif">
     <div class="wrapper-fluid">
         <div class="header-container d-flex justify-content-between align-items-center">
             <a class="navbar-brand" href="{{route('frontend.index')}}">
