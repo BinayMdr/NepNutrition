@@ -111,14 +111,14 @@
                         <use href="{{asset('assets/frontend/image/icons.svg')}}#icon-love"></use>
                     </svg>
                     <h3 class="text-white text-center">Premium Quality Guarantee</h3>
-                    <p class="text-white text-center">We ensure top-tier quality with free delivery for your convenience</p>
+                    <p class="text-white text-center">We ensure top-tier quality with delivery for your convenience</p>
                 </div>
                 <div class="col-md-4 col-12 text-center">
                     <svg viewBox="0 0 62 80" width="62" class="mb-5">
                         <use href="{{asset('assets/frontend/image/icons.svg')}}#icon-love"></use>
                     </svg>
                     <h3 class="text-white text-center">Genuine Products Only</h3>
-                    <p class="text-white text-center">Authentic items guaranteed with hassle-free returns and exchanges</p>
+                    <p class="text-white text-center">Authentic items guaranteed in Nepal</p>
                 </div>
             </div>
         </div>
