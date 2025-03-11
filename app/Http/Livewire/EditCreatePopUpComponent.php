@@ -103,6 +103,10 @@ class EditCreatePopUpComponent extends Component
         ];
         if($this->image != null)
         {
+            if ($this->popUp->image && \Storage::disk('public')->exists($this->popUp->image)) {
+                \Storage::disk('public')->delete($this->popUp->image);
+            }
+
             $pop_up_image = 'popup-'.time().'.'.$this->image->extension(); 
             $pop_up_image_path = $this->image->storeAs('public/uploads/pop-up',$pop_up_image);
             $data['image'] = str_replace("public/","",$pop_up_image_path);

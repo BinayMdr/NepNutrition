@@ -107,6 +107,10 @@ class EditCreateBannerComponent extends Component
         ];
         if($this->image != null)
         {
+            if ($this->banner->image && \Storage::disk('public')->exists($this->banner->image)) {
+                \Storage::disk('public')->delete($this->banner->image);
+            }
+            
             $banner_image = 'bg-'.time().'.'.$this->image->extension(); 
             $banner_image_path = $this->image->storeAs('public/uploads/banner',$banner_image);
             $data['image'] = str_replace("public/","",$banner_image_path);

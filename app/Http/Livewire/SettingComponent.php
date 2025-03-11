@@ -122,6 +122,10 @@ class SettingComponent extends Component
 
             if($this->tempBannerImage != null)
             {
+                if ($this->settings['banner-image'] && \Storage::disk('public')->exists($this->settings['banner-image'])) {
+                    \Storage::disk('public')->delete($this->settings['banner-image']);
+                }
+
                 $banner_image = 'loading-'.time().'.'.$this->tempBannerImage->extension(); 
                 $banner_image_path = $this->tempBannerImage->storeAs('public/uploads/setting',$banner_image);
                 Setting::updateOrCreate([
@@ -134,6 +138,10 @@ class SettingComponent extends Component
 
             if($this->tempMidBannerImage != null)
             {
+                if ($this->settings['mid-banner-image'] && \Storage::disk('public')->exists($this->settings['mid-banner-image'])) {
+                    \Storage::disk('public')->delete($this->settings['mid-banner-image']);
+                }
+
                 $mid_banner_image = 'loading-'.time().'.'.$this->tempMidBannerImage->extension(); 
                 $mid_banner_image_path = $this->tempMidBannerImage->storeAs('public/uploads/setting',$mid_banner_image);
                 Setting::updateOrCreate([

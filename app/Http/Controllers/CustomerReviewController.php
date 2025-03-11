@@ -31,6 +31,9 @@ class CustomerReviewController extends Controller
     {
         if(\Auth::user()->hasRole('delete-customer-reviews'))
         {
+            if ($customerReview->image && \Storage::disk('public')->exists($customerReview->image)) {
+                \Storage::disk('public')->delete($customerReview->image);
+            }
             $customerReview->delete();
             return redirect()->route('customer-review')->with('success','Customer Review deleted');
         }

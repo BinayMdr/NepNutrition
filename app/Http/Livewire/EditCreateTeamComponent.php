@@ -83,6 +83,10 @@ class EditCreateTeamComponent extends Component
         ];
         if($this->image != null)
         {
+            if ($this->team->image && \Storage::disk('public')->exists($this->team->image)) {
+                \Storage::disk('public')->delete($this->team->image);
+            }
+            
             $team_image = 'bg-'.time().'.'.$this->image->extension(); 
             $team_image_path = $this->image->storeAs('public/uploads/team',$team_image);
             $data['image'] = str_replace("public/","",$team_image_path);

@@ -30,6 +30,10 @@ class ProductController extends Controller
     {
         if(\Auth::user()->hasRole('delete-products'))
         {
+            if ($product->image && \Storage::disk('public')->exists($product->image)) {
+                \Storage::disk('public')->delete($product->image);
+            }
+
             $product->delete();
             return redirect()->route('product')->with('success','Product deleted');
         }

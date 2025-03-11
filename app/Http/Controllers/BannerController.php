@@ -30,6 +30,10 @@ class BannerController extends Controller
     {
         if(\Auth::user()->hasRole('delete-banners'))
         {
+            if ($banner->image && \Storage::disk('public')->exists($banner->image)) {
+                \Storage::disk('public')->delete($banner->image);
+            }
+
             $banner->delete();
             return redirect()->route('banner')->with('success','Banner deleted');
         }

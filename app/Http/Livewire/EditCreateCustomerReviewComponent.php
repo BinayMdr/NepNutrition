@@ -90,6 +90,10 @@ class EditCreateCustomerReviewComponent extends Component
         ];
         if($this->image != null)
         {
+            if ($this->customerReview->image && \Storage::disk('public')->exists($this->customerReview->image)) {
+                \Storage::disk('public')->delete($this->customerReview->image);
+            }
+
             $customer_review_image = 'bg-'.time().'.'.$this->image->extension(); 
             $customer_review_image_path = $this->image->storeAs('public/uploads/customer-review',$customer_review_image);
             $data['image'] = str_replace("public/","",$customer_review_image_path);

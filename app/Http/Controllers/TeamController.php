@@ -30,6 +30,9 @@ class TeamController extends Controller
     {
         if(\Auth::user()->hasRole('delete-teams'))
         {
+            if ($team->image && \Storage::disk('public')->exists($team->image)) {
+                \Storage::disk('public')->delete($team->image);
+            }
             $team->delete();
             return redirect()->route('team')->with('success','Team deleted');
         }

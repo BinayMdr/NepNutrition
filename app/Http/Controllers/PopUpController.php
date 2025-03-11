@@ -29,6 +29,9 @@ class PopUpController extends Controller
     {
         if(\Auth::user()->hasRole('delete-pop-ups'))
         {
+            if ($popUp->image && \Storage::disk('public')->exists($popUp->image)) {
+                \Storage::disk('public')->delete($popUp->image);
+            }
             $popUp->delete();
             return redirect()->route('pop-up')->with('success','Popup deleted');
         }

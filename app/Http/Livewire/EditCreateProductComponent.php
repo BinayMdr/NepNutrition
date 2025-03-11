@@ -121,6 +121,9 @@ class EditCreateProductComponent extends Component
 
         if($this->image != null)
         {
+            if ($this->product->image && \Storage::disk('public')->exists($this->product->image)) {
+                \Storage::disk('public')->delete($this->product->image);
+            }
             $display_image = 'bg-'.time().'.'.$this->image->extension(); 
             $display_image_path = $this->image->storeAs('public/uploads/product',$display_image);
         }
