@@ -1,4 +1,9 @@
 @extends('frontend.layout.master')
+
+@section('title')
+    <title>NepNutrition | Product</title>
+@endsection
+
 @section('css')
 <link rel="stylesheet" href="{{asset('assets/frontend/css/product-detail.css')}}">
 @endsection

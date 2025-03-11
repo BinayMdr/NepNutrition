@@ -1,4 +1,9 @@
 @extends('frontend.layout.master')
+
+@section('title')
+    <title>NepNutrition | Contact Us</title>
+@endsection
+
 @section('content')
 <section class="pageBanner position-relative d-flex align-items-center w-100 justify-content-center align-items-center overflow-hidden" id="pageBanner">
     <div class="image-wrapper position-absolute h-100 w-100">

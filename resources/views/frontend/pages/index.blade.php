@@ -1,4 +1,9 @@
 @extends('frontend.layout.master')
+
+@section('title')
+    <title>NepNutrition | Home</title>
+@endsection
+
 @section('content')
 
 <main>
