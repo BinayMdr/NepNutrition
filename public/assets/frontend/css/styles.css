@@ -9386,7 +9386,7 @@ textarea.form-control-lg {
 
 .bg-dusty-grey {
   --npn-bg-opacity: 1;
-  background-color: rgba(var(--npn-dusty-grey-rgb), var(--npn-bg-opacity)) !important;
+  /* background-color: rgba(var(--npn-dusty-grey-rgb), var(--npn-bg-opacity)) !important; */
 }
 
 .bg-apple-green {
@@ -13323,8 +13323,8 @@ table tr:hover,
 }
 .popup-modal .popup-btn-close {
   position: absolute;
-  right: -17px;
-  top: -18px;
+  right: -5px;
+  top: -5px;
   background-color: #BB2124;
   color: #fff;
   border-radius: 50%;

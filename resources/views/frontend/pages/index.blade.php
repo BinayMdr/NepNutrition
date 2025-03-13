@@ -231,8 +231,11 @@
         data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog modal-dialog-centered modal-lg flex-column justify-content-center popup-modal">
             <div class="bg-transparent border-0 modal-content rounded-0">
-                <div class="bg-dusty-grey modal-body text-white">
-                    <img src="{{ env('APP_URL').'storage/'.$popUp->image}}" alt="{{$popUp->name}}" class="img-fluid">
+                <div class="bg-dusty-grey modal-body text-white text-end">
+                    <a @if($popUp->link != null && $popUp->link != "") href="{{ $popUp->link }}" @endif target="_blank" rel="noopener noreferrer">
+                        <img src="{{ env('APP_URL').'storage/'.$popUp->image}}" alt="{{$popUp->name}}" class="img-fluid"
+                                    >
+                    </a>
                 </div>
                 <div class="border-0 justify-content-center modal-footer p-0">
                     <button type="button" class="btn-sm btn-close popup-btn-close" data-bs-dismiss="modal" aria-label="Close"
