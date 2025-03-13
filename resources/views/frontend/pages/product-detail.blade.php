@@ -26,42 +26,29 @@
 <main>
     <section class="product-page detail my-5">
         <div class="wrapper">
-            <div class="row justify-content-center">
-                <div class="col-lg-6 col-7 mb-4">
-                    <img src="{{ env('APP_URL').'storage/'.$product->image}}" alt="{{$product->name}}" class="img-fluid product-img">
-                </div>
-                <div class="col-lg-6 col-12 mb-md-0 mb-3">
-                    <div class="product-meta">
-                        <p class="product-type text-dusty-grey mb-3">
-                                @if($product->series != "" && $product->series != null)
-                                {{$product->series}}
-                                @endif
-                        </p>
-                        <h1 class="text-white mb-3">
-                            {{$product->name}}
-                        </h1>
-                        <p class="mb-0 d-flex justify-content-between">
+            <img src="{{ env('APP_URL').'storage/'.$product->image}}" alt="{{$product->name}}" class="img-fluid product-img">
+            <div class="product-detail">
+                <div class="product-meta">
+                    <p class="product-type text-dusty-grey mb-3">
+                        {{$product->series}}
+                    </p>
+                    <h1 class="text-white mb-3">
+                        {{$product->name}}
+                    </h1>
+                    <p class="mb-0 d-flex justify-content-between">
                         <span class="text-warm-grey h3 fw-medium">
-                            @if($product->price != "" && $product->price != null)
-                            Rs. {{$product->price}}
-                            @endif
+                            @if($product->price != "" && $product->price != null) Rs. {{$product->series}} @endif
                         </span>
                         <span class="text-warm-grey h5 fw-light">
-                                @if($product->reference != "" && $product->reference != null)
-                                {{$product->reference}}
-                                @endif
+                            {{$product->reference}}
                         </span>
-                        </p>
-                    </div>
-                    <hr class="dashed-border">
-                    <div class="description-container">
-                        <h4 class="text-dusty-grey">
-                            @if($product->description != "" && $product->description != null)
-                            Description:
-                            @endif</h4>
-                        <div class="description text-warm-grey">
-                            {!!$product->description !!}
-                        </div>
+                    </p>
+                </div>
+                <hr class="dashed-border">
+                <div class="description-container">
+                    <h4 class="text-dusty-grey">Description:</h4>
+                    <div class="description text-warm-grey">
+                        {!! $product->description !!}
                     </div>
                 </div>
             </div>

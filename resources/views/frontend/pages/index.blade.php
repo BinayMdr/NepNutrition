@@ -145,7 +145,7 @@
                     <div>
                         <div class="product-card home d-flex align-items-center">
                             <div class="product-info-wrapper ms-auto">
-                                <div class="product-info">
+                                <div class="product-info h-100 d-flex align-items-center">
                                     <div class="product-image">
                                         <img src="{{ env('APP_URL').'storage/'.$product->image }}" alt="{{$product->name}}" class="product-image">
                                     </div>
@@ -229,15 +229,15 @@
 @if(!is_null($popUp) && !$sessionValue)
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true"
         data-bs-backdrop="static" data-bs-keyboard="false">
-        <div class="modal-dialog modal-dialog-centered modal-xl flex-column justify-content-center popup-modal">
+        <div class="modal-dialog modal-dialog-centered modal-lg flex-column justify-content-center popup-modal">
             <div class="bg-transparent border-0 modal-content rounded-0">
                 <div class="bg-dusty-grey modal-body text-white">
                     <img src="{{ env('APP_URL').'storage/'.$popUp->image}}" alt="{{$popUp->name}}" class="img-fluid">
                 </div>
-                <div class="border-0 justify-content-center modal-footer">
-                    <button type="button" class="btn btn-sm popup-btn-close" data-bs-dismiss="modal" aria-label="Close"
+                <div class="border-0 justify-content-center modal-footer p-0">
+                    <button type="button" class="btn-sm btn-close popup-btn-close" data-bs-dismiss="modal" aria-label="Close"
                     data-modal-id="{{$popUp->name}}-{{$popUp->id}}">
-                        Close
+                        
                     </button>
                 </div>
             </div>
