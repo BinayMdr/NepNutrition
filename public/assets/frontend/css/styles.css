@@ -13304,6 +13304,7 @@ table tr:hover,
   --sb-size: 5px;
   max-height: calc(100dvh - 80px);
   overflow: auto;
+  padding:0;
 }
 .popup-modal .modal-body::-webkit-scrollbar {
   width: var(--sb-size);
