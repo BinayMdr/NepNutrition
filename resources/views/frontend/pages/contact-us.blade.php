@@ -1,7 +1,7 @@
 @extends('frontend.layout.master')
 
 @section('title')
-    <title>NepNutrition | Contact Us</title>
+    <title>Nep Nutrition | Contact Us</title>
 @endsection
 
 @section('content')
@@ -94,9 +94,10 @@
                                     <textarea class="form-control" id="message" rows="2" name="message" required></textarea>
                                 </div>
                             </div>
+                            <div class="g-recaptcha mt-4" data-sitekey={{config('services.recaptcha.key')}} data-callback="enableSubmit"></div>
                             <div class="text-end mt-3 position-relative" id="submit-button">
 
-                                    <button class="btn btn-outline-light ">
+                                    <button class="btn btn-outline-light" id="submitBtn" disabled>
         SEND MESSAGE
     </button>
 
@@ -144,6 +145,17 @@
         });
     @endif
 </script>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script>
+    function enableSubmit() {
+        var captchaResponse = grecaptcha.getResponse();
+        var submitBtn = document.getElementById('submitBtn');
+        submitBtn.disabled = captchaResponse.length === 0;
+    }
+</script>
+
 @endsection
 
 
