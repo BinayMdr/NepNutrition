@@ -18,11 +18,34 @@
     @yield('css')
     {{-- <link rel="stylesheet" href="css/@@css"> --}}
     
+    <link rel="canonical" href="https://nepnutrition.com.np/">
     <link rel="icon" type="image/png" href="{{asset('assets/favicon/favicon-96x96.png')}}" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="{{asset('assets/favicon/favicon.svg')}}" />
     <link rel="shortcut icon" href="{{asset('assets/favicon/favicon.ico')}}" />
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('assets/favicon/apple-touch-icon.png')}}" />
     <link rel="manifest" href="{{asset('assets/favicon/site.webmanifest')}}" />
+
+    <meta name="description" content="Nep Nutrition provides high-quality supplements to help you achieve your fitness goals. Shop now!">
+    <meta name="keywords" content="Nep Nutrition, supplements, fitness, health, protein, gym, vitamins, sports nutrition">
+    <meta name="author" content="Nep Nutrition">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Open Graph Meta Tags (Facebook, Instagram, WhatsApp) -->
+    <meta property="og:title" content="Nep Nutrition">
+    <meta property="og:description" content="Nep Nutrition - Your trusted source for supplements.">
+    <meta property="og:image" content="https://nepnutrition.com.np/assets/frontend/image/logo.jpg">
+    <meta property="og:url" content="https://nepnutrition.com.np/">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags (Twitter) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nep Nutrition">
+    <meta name="twitter:description" content="Nep Nutrition - Your trusted source for supplements.">
+    <meta name="twitter:image" content="https://nepnutrition.com.np/assets/frontend/image/logo.jpg">
+    <meta name="twitter:url" content="https://nepnutrition.com.np/">
+
+
 </head>
 <body>
 <nav class="header sticky-top @if(\Route::currentRouteName() == 'frontend.index') is-index @else bg-young-night shadow @endif">
@@ -111,12 +134,6 @@
                                     <use href="{{asset('assets/frontend/image/icons.svg')}}#icon-next"></use>
                                 </svg>
                                 <a href="{{route('frontend.gallery')}}" class="nav-link flex-grow-1">GALLERY</a>
-                            </li>
-                            <li class="nav-item d-flex gap-2 align-items-center">
-                                <svg width="16" height="16" viewBox="0 0 16 16">
-                                    <use href="{{asset('assets/frontend/image/icons.svg')}}#icon-next"></use>
-                                </svg>
-                                <a href="{{route('frontend.authenticity')}}" class="nav-link flex-grow-1">AUTHENTICITY</a>
                             </li>
                         </ul>
                     </div>
