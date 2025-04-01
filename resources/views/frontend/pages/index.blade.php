@@ -221,8 +221,7 @@
 <!-- Modal PopUp -->
 
 <?php
-    $sessionValue = Session::get('modal_shown') == $popUp->name."-".$popUp->id;
-    
+    if(!is_null($popUp)) $sessionValue = Session::get('modal_shown') == $popUp->name."-".$popUp->id;
 ?>
 
 
