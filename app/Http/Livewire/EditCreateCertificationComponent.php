@@ -43,7 +43,7 @@ class EditCreateCertificationComponent extends Component
     
             $storedCertification->delete();
     
-            $this->storedPhotos = Certification::where('id', '!=', $id)->get();
+            $this->storedPhotos = Certification::orderBy('id','desc')->get();
         }
 
         $this->emit('refreshComponent');

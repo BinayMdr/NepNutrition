@@ -49,8 +49,9 @@ class EditCreateGalleryComponent extends Component
         if ($storedGallery && \Storage::disk('public')->exists($storedGallery->image)) {
             \Storage::disk('public')->delete($storedGallery->image);
             $storedGallery->delete();
-            $this->storedPhotos = Gallery::all();
+            $this->storedPhotos = Gallery::orderBy('id','desc')->get();
         }
+        // dd($this->storedPhotos);
 
         $this->emit('refreshComponent');
     }
