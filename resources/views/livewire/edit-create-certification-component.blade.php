@@ -23,39 +23,43 @@
                   <input type="file" class="form-control" name="image" wire:model="photos" multiple accept="image/*">
 
                   
-                  <div class="d-flex mt-3" style="gap: 10px; overflow-x: auto;">
+                  <div class="d-flex mt-3 flex-wrap" style="gap: 10px; overflow-x: auto;">
                     @foreach ($photos as $index => $photo)
-                        <div style="position: relative;">
+                        <div style="position: relative; margin-bottom: 10px; width: 120px;">
                             <img src="{{ $photo->temporaryUrl() }}" width="100" height="100" class="rounded">
                             <button type="button" class="btn btn-danger btn-sm"
-                                    style="position: absolute; top: -5px; right: -5px; background:transparent;box-shadow:none"
+                                    style="position: absolute; top: -5px; right: 15px; background:transparent; box-shadow:none;"
                                     wire:click="removePhoto({{ $index }})">
                                 &times;
                             </button>
                         </div>
                     @endforeach
                 </div>
-            
-                <div class="d-flex mt-3" style="gap: 10px; overflow-x: auto;">
-                    @foreach ($storedPhotos as $index => $storedPhoto)
-                        <div style="position: relative;">
-                            <img src="{{ asset('storage/' . $storedPhoto->image) }}" width="100" height="100" class="rounded">
-                            @if(\Auth::user()->hasRole('delete-certifications'))
-                            <button type="button" class="btn btn-danger btn-sm"
-                                    style="position: absolute; top: -5px; right: -5px;background:transparent;box-shadow:none"
-                                     wire:click.debounce.500ms="removeStoredPhoto({{ $storedPhoto->id }})">
-                                &times;
-                            </button>
-                            @endif
-
-                        </div>
-                    @endforeach
-                </div>
+                
+                
                 @if(\Auth::user()->hasRole('add-certifications') || \Auth::user()->hasRole('edit-certifications') )
                   <div class="text-center">
                     <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2"> @if($certification) Update @else Add @endif Certification</button>
                   </div>
                 @endif
+
+                <div class="d-flex mt-3 flex-wrap" style="gap: 10px; overflow-x: auto;">
+                  @foreach ($storedPhotos as $index => $storedPhoto)
+                      <div style="position: relative; margin-bottom: 10px; width: 120px;">
+                          <img src="{{ asset('storage/' . $storedPhoto->image) }}" width="100" height="100" class="rounded">
+              
+                          @if(\Auth::user()->hasRole('delete-certifications'))
+                          <button type="button" class="btn btn-danger btn-sm"
+                                  style="position: absolute; top: -5px; right: 15px; background:transparent; box-shadow:none;"
+                                  wire:click.debounce.500ms="removeStoredPhoto({{ $storedPhoto->id }})">
+                              &times;
+                          </button>
+                          @endif
+                      </div>
+                  @endforeach
+              </div>
+              
+                
                 </form>
               </div>
             </div>

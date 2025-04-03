@@ -21,50 +21,57 @@
                 <form class="text-start" wire:submit.prevent="update">  
                   <input type="file" class="form-control" wire:model="photos" multiple accept="image/*">
               
-                  <div class="d-flex mt-3" style="overflow-x: auto;">
-                      @foreach ($photos as $index => $photo)
-                          <div style="position: relative;">
-                              <img src="{{ $photo->temporaryUrl() }}" width="100" height="100" class="rounded">
-                              <button type="button" class="btn btn-danger btn-sm"
-                                      style="position: absolute; top: -5px; right: 55px; background:transparent; box-shadow:none"
-                                      wire:click="removePhoto({{ $index }})">
-                                  &times;
-                              </button>
-                              <input type="text" class="form-control mt-2" placeholder="Enter caption" wire:model="captions.{{ $index }}">
-                          </div>
-                      @endforeach
-                  </div>
-              
-                  <div class="d-flex mt-3" style="overflow-x: auto;">
-                      @foreach ($storedPhotos as $storedPhoto)
-                          <div style="position: relative;">
-                              <img src="{{ asset('storage/' . $storedPhoto->image) }}" width="100" height="100" class="rounded"  data-bs-toggle="tooltip" data-bs-placement="top" 
-                              title="{{ $storedPhoto->caption ?? 'No caption available' }}">
-
-                              <input type="text" class="form-control mt-1"
-                                wire:model.debounce.100ms="storedCaptions.{{ $storedPhoto->id }}" 
-                                wire:blur="updateCaption({{ $storedPhoto->id }})"
-                                placeholder="Enter caption"
-                                style="width: 80%; font-size: 12px;">
-
-                              @if(\Auth::user()->hasRole('delete-gallery'))
-                              <button type="button" class="btn btn-danger btn-sm"
-                                      style="position: absolute; top: -5px; right: 30px; background:transparent; box-shadow:none"
-                                      wire:click.debounce.500ms="removeStoredPhoto({{ $storedPhoto->id }})">
-                                  &times;
-                              </button>
-                              @endif
-                          </div>
-                      @endforeach
-                  </div>
-              
-                  @if(\Auth::user()->hasRole('add-gallery') || \Auth::user()->hasRole('edit-gallery'))
+                  <div class="d-flex mt-3 flex-wrap" style="overflow-x: auto;">
+                    @foreach ($photos as $index => $photo)
+                        <div style="position: relative; margin-right: 10px; margin-bottom: 10px;">
+                            <img src="{{ $photo->temporaryUrl() }}" width="100" height="100" class="rounded">
+                            <button type="button" class="btn btn-danger btn-sm"
+                                    style="position: absolute; top: -5px; right: 50px; background:transparent; box-shadow:none;"
+                                    wire:click="removePhoto({{ $index }})">
+                                &times;
+                            </button>
+                            <input type="text" class="form-control mt-2" placeholder="Enter caption" wire:model="captions.{{ $index }}">
+                        </div>
+                    @endforeach
+                </div>
+                
+                
+                
+                @if(\Auth::user()->hasRole('add-gallery') || \Auth::user()->hasRole('edit-gallery'))
                     <div class="text-center">
                       <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">
                           @if($gallery) Update @else Add @endif Gallery
                       </button>
                     </div>
                   @endif
+
+                <div class="d-flex mt-3 flex-wrap" style="overflow-x: auto;">
+                  @foreach ($storedPhotos as $storedPhoto)
+                      <div style="position: relative; margin-right: 10px; margin-bottom: 10px; width: 120px;">
+                          <img src="{{ asset('storage/' . $storedPhoto->image) }}" width="100" height="100" class="rounded"  
+                               data-bs-toggle="tooltip" data-bs-placement="top" 
+                               title="{{ $storedPhoto->caption ?? 'No caption available' }}">
+              
+                          <input type="text" class="form-control mt-1"
+                                 wire:model.debounce.100ms="storedCaptions.{{ $storedPhoto->id }}" 
+                                 wire:blur="updateCaption({{ $storedPhoto->id }})"
+                                 placeholder="Enter caption"
+                                 style="width: 100%; font-size: 12px;">
+              
+                          @if(\Auth::user()->hasRole('delete-gallery'))
+                          <button type="button" class="btn btn-danger btn-sm"
+                                  style="position: absolute; top: -5px; right: 15px; background:transparent; box-shadow:none;"
+                                  wire:click.debounce.500ms="removeStoredPhoto({{ $storedPhoto->id }})">
+                              &times;
+                          </button>
+                          @endif
+                      </div>
+                  @endforeach
+              </div>
+              
+
+              
+                  
               </form>
               
               </div>
