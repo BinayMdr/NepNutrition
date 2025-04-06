@@ -80,7 +80,7 @@
 
                   <div class="row">
 
-                    <div class="my-4" style="width: 100%; height: 150px; overflow: hidden;">
+                    <div class="my-4" style="width: 100%; height: 250px; overflow: hidden;">
                       @if ($image)
                         <img src="{{ $image->temporaryUrl() }}" style="width: 30%; height: 100%;">
                       @elseif(!is_null($team))

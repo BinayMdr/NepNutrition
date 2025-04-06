@@ -131,11 +131,11 @@
 
                 <div class="row pt-6">
                   <div class="col-12">
-                    <div class="my-4" style="width: 50%; height: 150px; overflow: hidden;">
+                    <div class="my-4" style="width: 50%; height: 200px; overflow: hidden;">
                       @if ($image)
-                        <img src="{{ $image->temporaryUrl() }}" style="width: 30%; height: 100%;">
+                        <img src="{{ $image->temporaryUrl() }}" style="width: 40%; height: 100%;">
                       @elseif(!is_null($product))
-                          <img src="{{ env('APP_URL').'storage/'.$product->image }}" style="width: 30%; height: 100%;">
+                          <img src="{{ env('APP_URL').'storage/'.$product->image }}" style="width: 40%; height: 100%;">
                       @endif
                     </div>      
                     <div>

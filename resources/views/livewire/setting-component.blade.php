@@ -91,7 +91,7 @@
               
                 <div class="row mb-4 mt-6">
                   <div class="col-6">
-                    <div class="my-4" style="width: 100%; height: 150px; overflow: hidden;">
+                    <div class="my-4" style="width: 100%; overflow: hidden;">
                       @if ($tempBannerImage)
                         <img src="{{ $tempBannerImage->temporaryUrl() }}" width="100%" height="100%">
                       @elseif(count($settings) > 0)
@@ -105,11 +105,11 @@
                   </div>
 
                   <div class="col-6">
-                    <div class="my-4" style="width: 100%; height: 150px; overflow: hidden;">
+                    <div class="my-4" style="width: 100%; overflow: hidden;">
                       @if ($tempMidBannerImage)
-                        <img src="{{ $tempMidBannerImage->temporaryUrl() }}" width="100%" height="100%">
+                        <img src="{{ $tempMidBannerImage->temporaryUrl() }}" width="50%" height="50%">
                       @elseif(count($settings) > 0)
-                          <img src="{{ env('APP_URL').'storage/'.$settings['mid-banner-image'] }}" width="100%" height="100%">
+                          <img src="{{ env('APP_URL').'storage/'.$settings['mid-banner-image'] }}" width="50%" height="50%">
                       @endif
                     </div>      
                     <div>

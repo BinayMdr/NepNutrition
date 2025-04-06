@@ -13140,7 +13140,7 @@ table tr:hover,
 }
 
 .latest-products {
-  background-image: url("../assets/images/latestProduct_bg.png");
+  background-image: url("../image/latestProduct_bg.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
@@ -13253,7 +13253,7 @@ table tr:hover,
   content: "";
   position: absolute;
   z-index: -1;
-  background: url("../assets/images/lines.png") no-repeat top right;
+  background: url("../image/lines.png") no-repeat top right;
   background-size: 550px;
   width: 100%;
   height: 100%;

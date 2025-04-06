@@ -64,9 +64,9 @@
                 </ul>
             </div>
             <div class="search cursor-pointer d-md-block d-none" data-bs-target="#searchModal" data-bs-toggle="modal">
-                <svg height="20" width="20">
+                {{-- <svg height="20" width="20">
                     <use href="./assets/images/icons.svg#icon-search"></use>
-                </svg>
+                </svg> --}}
             </div>
 
             <!--Search Modal-->
