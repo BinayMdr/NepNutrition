@@ -261,6 +261,12 @@
             </div>
         </div>
     </div>
+
+    @php
+        if(\Route::currentRouteName() == 'frontend.product_details') $text = "More information about {$product->name}";
+        else $text = "Hello";
+    @endphp
+    <div class="icon-whatsapp"><a href="{{$settings['chat-script']}}&amp;text={{ urlencode($text) }}" target="_blank"><span>Chat</span></a></div>
 </footer>
 @yield('js')
 </body>
