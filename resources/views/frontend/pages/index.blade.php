@@ -22,7 +22,7 @@
                             @if($banners[0]->button_text != "" && $banners[0]->button_text != null)
                                 <button class="btn btn-burnt-yellow mt-5" 
                                 @if($banners[0]->button_link != "" && $banners[0]->button_link != null)
-                                    onclick="window.location.href='{{ $banners[0]->button_link }}' target='_blank' rel='noopener noreferrer'"
+                                    onclick="window.open('{{ $banners[0]->button_link }}', '_blank', 'noopener,noreferrer')"
                                 @endif>
                                     {{$banners[0]->button_text}}
                                 </button>
