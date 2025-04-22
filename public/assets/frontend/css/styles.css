@@ -13299,15 +13299,28 @@ table tr:hover,
 }
 
 .popup-modal .modal-body {
-  --sb-track-color: #232E33;
+  /* --sb-track-color: #232E33;
   --sb-thumb-color: #787878;
-  --sb-size: 5px;
-  max-height: calc(100dvh - 80px);
-  overflow: auto;
+  --sb-size: 5px; */
+  max-height: 100vh;
+  overflow: hidden;
   padding:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.popup-modal .modal-body img {
+  max-width: 100%;
+  max-height: 80vh; /* Scales down image if needed */
+  height: auto;
+  width: auto;
+  object-fit: contain; /* Ensures image is fully visible */
+}
+
 .popup-modal .modal-body::-webkit-scrollbar {
   width: var(--sb-size);
+  display:none
 }
 .popup-modal .modal-body::-webkit-scrollbar-track {
   background: var(--sb-track-color);
@@ -13322,16 +13335,46 @@ table tr:hover,
     scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
   }
 }
+
+.popup-modal .image-wrapper {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  max-width: 100%;
+}
+
+.popup-modal .image-wrapper img {
+  display: block;
+  max-width: 100%;
+  max-height: 80vh;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
 .popup-modal .popup-btn-close {
   position: absolute;
-  right: -5px;
-  top: -5px;
+  right: 0px;
+  top: 0px;
   background-color: #BB2124;
   color: #fff;
   border-radius: 50%;
+  border: none;
   opacity: 1;
-  padding: 4px;
+  padding: 5px;
+  font-size: 1rem;
+  z-index: 10;
   background-size: 10px;
+}
+
+@media (max-width: 576px) {
+  .popup-btn-close {
+    top: 4px;
+    right: 4px;
+    padding: 4px;
+    font-size: 0.875rem;
+  }
 }
 
 .cursor-pointer {
